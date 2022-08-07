@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_calc/widgets/pad_button.dart';
+
 class NumPad extends StatelessWidget {
   const NumPad({Key? key}) : super(key: key);
 
@@ -43,35 +45,25 @@ class NumPad extends StatelessWidget {
                 crossAxisCount: 4,
                 mainAxisSpacing: 8,
                 crossAxisSpacing: 8,
-                children: buttons
-                    .map((String e) => Stack(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                color: const Color(0XFFB3A195),
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(bottom: 6),
-                              decoration: BoxDecoration(
-                                color: const Color(0XFFEBE3D8),
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  e,
-                                  style: const TextStyle(
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color(0XFF252D44),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ))
-                    .toList(),
+                children: buttons.map(
+                  (String e) {
+                    if (e == 'DEL') {
+                      return PadButton(
+                        color: const Color(0XFF647299),
+                        shadowColor: const Color(0XFF404E75),
+                        text: e,
+                        textColor: Colors.white,
+                      );
+                    } else {
+                      return PadButton(
+                        color: const Color(0XFFEBE3D8),
+                        shadowColor: const Color(0XFFB3A195),
+                        text: e,
+                        textColor: const Color(0XFF252D44),
+                      );
+                    }
+                  },
+                ).toList(),
               ),
             ),
             const SizedBox(height: 16),
@@ -83,37 +75,25 @@ class NumPad extends StatelessWidget {
                 mainAxisSpacing: 8,
                 crossAxisSpacing: 8,
                 childAspectRatio: 2,
-                children: buttons2
-                    .map(
-                      (String e) => Stack(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: const Color(0XFFB3A195),
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: const Color(0XFFEBE3D8),
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                            margin: const EdgeInsets.only(bottom: 6),
-                            child: Center(
-                              child: Text(
-                                e,
-                                style: const TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0XFF252D44),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                    .toList(),
+                children: buttons2.map(
+                  (String e) {
+                    if (e == 'RESET') {
+                      return PadButton(
+                        color: const Color(0XFF647299),
+                        shadowColor: const Color(0XFF404E75),
+                        text: e,
+                        textColor: Colors.white,
+                      );
+                    } else {
+                      return PadButton(
+                        color: const Color(0XFFCF4032),
+                        shadowColor: const Color(0XFF8F2316),
+                        text: e,
+                        textColor: const Color(0XFF252D44),
+                      );
+                    }
+                  },
+                ).toList(),
               ),
             ),
           ],
